@@ -10,9 +10,13 @@ export default new Vuex.Store({
     users: []
   },
   actions: {
-    async fetchUsers(ctx, pageNumber) {
-      const {data: {data}} = await axios(`${baseUrl}/users?delay=3&page=${pageNumber}`)
-      ctx.commit('setUsers', data)
+    async fetchUsers({commit}, pageNumber) {
+      try {
+        const {data: {data}} = await axios(`${baseUrl}/users?delay=3&page=${pageNumber}`)
+        commit('setUsers', data)
+      } catch (e) {
+        console.log(e.error)
+      }
     }
   },
   mutations: {
