@@ -1,12 +1,28 @@
 <template>
   <div class="users">
-    Users
+    {{users}}
   </div>
 </template>
 
 <script>
+  import {mapActions, mapGetters} from 'vuex'
+
   export default {
-    name: 'Users'
+    name: 'Users',
+    data() {
+      return {
+        pageNumber: 1
+      }
+    },
+    computed: {
+      ...mapGetters(['users'])
+    },
+    methods: {
+      ...mapActions(['fetchUsers'])
+    },
+    mounted() {
+      this.fetchUsers(this.pageNumber)
+    }
   }
 </script>
 
