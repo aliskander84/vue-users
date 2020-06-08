@@ -2,9 +2,10 @@
   <v-hover>
     <template v-slot="{hover}">
       <v-card
-          class="user-card"
+          class="ma-2"
           :elevation="hover ? 4 : 1"
       >
+        <v-img :src="user.avatar" alt=""/>
         <v-card-title>
           {{user.first_name}} {{user.last_name}}
         </v-card-title>
@@ -23,7 +24,6 @@
 </script>
 
 <style scoped lang="scss">
-  .user-card {
+  @import "~vuetify/src/styles/main";
 
-  }
 </style>

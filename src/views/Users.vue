@@ -1,11 +1,25 @@
 <template>
-  <div class="users pa-4">
-    <UserCard
-      v-for="user of users"
-      :key="user.id"
-      :user="user"
-      :v-if="users.length !== 0"
-    />
+  <div class="pa-2">
+    <v-container fluid>
+      <v-row>
+        <v-col
+            cols="12"
+            xs="12"
+            sm="6"
+            md="4"
+            lg="3"
+            xl="2"
+            v-for="user of users"
+            :key="user.id"
+            :v-if="users.length !== 0"
+        >
+          <UserCard
+              :user="user"
+          />
+        </v-col>
+      </v-row>
+    </v-container>
+
     <div class="loader" v-if="users.length === 0">
       Empty
     </div>
@@ -37,5 +51,18 @@
 </script>
 
 <style scoped lang="scss">
+  @import "~vuetify/src/styles/main";
 
+  .users {
+
+  }
+
+  .col {
+    @extend .mb-4;
+    @extend .ml-4;
+
+    &:first-child {
+      @extend .ml-0
+    }
+  }
 </style>
