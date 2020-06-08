@@ -1,12 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar
-        app
-        color="primary"
-        dark
-    >
-      Header
-    </v-app-bar>
+    <Header/>
 
     <v-content>
       <router-view/>
@@ -15,8 +9,9 @@
 </template>
 
 <script>
+  import Header from './components/Header'
   export default {
     name: 'App',
-    components: {}
+    components: {Header}
   }
 </script>
