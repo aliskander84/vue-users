@@ -21,6 +21,7 @@
           <router-link
               :to="{name: 'User', params: {id: index}}"
               style="text-decoration: none;"
+              v-if="viewBtn"
           >
             <v-btn
                 text
@@ -54,7 +55,8 @@
     name: 'UserCard',
     props: {
       user: Object,
-      index: Number
+      index: Number,
+      viewBtn: Boolean
     }
   }
 </script>
