@@ -9,12 +9,13 @@
             md="4"
             lg="3"
             xl="2"
-            v-for="user of users"
+            v-for="(user, index) of users"
             :key="user.id"
             :v-if="users.length !== 0"
         >
           <UserCard
               :user="user"
+              :index="index"
           />
         </v-col>
       </v-row>
@@ -42,10 +43,15 @@
       ...mapGetters(['users'])
     },
     methods: {
-      ...mapActions(['fetchUsers'])
+      ...mapActions(['fetchUsers']),
+      routeTo() {
+        this.$router.history.push()
+      }
     },
     mounted() {
-      this.fetchUsers(this.pageNumber)
+      if (this.users.length === 0) {
+        this.fetchUsers(this.pageNumber)
+      }
     }
   }
 </script>

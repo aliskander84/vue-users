@@ -19,7 +19,8 @@ const routes = [
   {
     path: '/user/:id',
     name: 'User',
-    component: () => import('../views/User')
+    component: () => import('../views/User'),
+    props: true
   }
 ]
 

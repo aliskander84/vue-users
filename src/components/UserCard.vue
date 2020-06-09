@@ -17,9 +17,32 @@
 
         <v-card-actions>
           <v-spacer/>
-          <v-btn text class="teal--text text--darken-0">VIEW</v-btn>
-          <v-btn text class="amber--text text--darken-4">EDIT</v-btn>
-          <v-btn text class="red--text text--darken-1">DELETE</v-btn>
+
+          <router-link
+              :to="{name: 'User', params: {id: index}}"
+              style="text-decoration: none;"
+          >
+            <v-btn
+                text
+                class="teal--text text--darken-0"
+            >
+              VIEW
+            </v-btn>
+          </router-link>
+
+          <v-btn
+              text
+              class="amber--text text--darken-4"
+          >
+            EDIT
+          </v-btn>
+
+          <v-btn
+              text
+              class="red--text text--darken-1"
+          >
+            DELETE
+          </v-btn>
         </v-card-actions>
       </v-card>
     </template>
@@ -30,7 +53,8 @@
   export default {
     name: 'UserCard',
     props: {
-      user: Object
+      user: Object,
+      index: Number
     }
   }
 </script>
