@@ -4,6 +4,17 @@
       color="primary"
       dark
   >
+    <router-link
+        to="/users"
+        style="text-decoration: none"
+        class="ml-n4"
+        v-if="routeName === 'User'"
+    >
+      <v-btn icon>
+        <v-icon>mdi-arrow-left</v-icon>
+      </v-btn>
+    </router-link>
+
     <v-toolbar-title>
       {{routeName}}
     </v-toolbar-title>
