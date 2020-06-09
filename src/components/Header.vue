@@ -16,7 +16,7 @@
     </router-link>
 
     <v-toolbar-title>
-      {{routeName}}
+      {{title}}
     </v-toolbar-title>
 
     <v-spacer/>
@@ -41,6 +41,9 @@
 <script>
   export default {
     name: 'Header',
+    props: {
+      id: Number
+    },
     computed: {
       homeLinkColorClass() {
         switch (this.$route.name) {
@@ -60,10 +63,16 @@
       },
       routeName() {
         return this.$route.name
+      },
+      routeUserName() {
+        return this.$route.params.userName
+      },
+      title() {
+        return this.routeUserName ? this.routeUserName : this.routeName
       }
     },
     mounted() {
-      console.log(this.$route.name)
+
     }
   }
 </script>

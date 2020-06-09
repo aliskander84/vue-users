@@ -19,7 +19,7 @@
           <v-spacer/>
 
           <router-link
-              :to="{name: 'User', params: {id: index}}"
+              :to="{name: 'User', params: {id: index, userName}}"
               style="text-decoration: none;"
               v-if="viewBtn"
           >
@@ -57,6 +57,11 @@
       user: Object,
       index: Number,
       viewBtn: Boolean
+    },
+    computed: {
+      userName() {
+        return `${this.user.first_name} ${this.user.last_name}`
+      }
     }
   }
 </script>

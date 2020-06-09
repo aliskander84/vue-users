@@ -16,7 +16,7 @@
           <UserCard
               :user="user"
               :index="index"
-              view-btn="true"
+              :view-btn="true"
           />
         </v-col>
       </v-row>
