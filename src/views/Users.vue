@@ -1,5 +1,7 @@
 <template>
   <div class="pa-2">
+    <Pagination class="pa-2"/>
+
     <v-container fluid>
       <v-row>
         <v-col
@@ -25,33 +27,28 @@
     <div class="loader" v-if="users.length === 0">
       Empty
     </div>
+
+    <Pagination class="pa-2"/>
   </div>
 </template>
 
 <script>
   import {mapActions, mapGetters} from 'vuex'
   import UserCard from '../components/UserCard'
+  import Pagination from '../components/Pagination/Pagination'
 
   export default {
     name: 'Users',
-    components: {UserCard},
-    data() {
-      return {
-        pageNumber: 1
-      }
-    },
+    components: {Pagination, UserCard},
     computed: {
       ...mapGetters(['users'])
     },
     methods: {
-      ...mapActions(['fetchUsers']),
-      routeTo() {
-        this.$router.history.push()
-      }
+      ...mapActions(['fetchUsers'])
     },
     mounted() {
       if (this.users.length === 0) {
-        this.fetchUsers(this.pageNumber)
+        this.fetchUsers()
       }
     }
   }
@@ -60,16 +57,5 @@
 <style scoped lang="scss">
   @import "~vuetify/src/styles/main";
 
-  .users {
 
-  }
-
-  .col {
-    @extend .mb-4;
-    @extend .ml-4;
-
-    &:first-child {
-      @extend .ml-0
-    }
-  }
 </style>
