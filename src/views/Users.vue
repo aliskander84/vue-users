@@ -26,6 +26,21 @@
     <Loader v-if="users.length === 0"/>
 
     <Pagination class="pa-2"/>
+
+    <v-fab-transition>
+      <v-btn
+          color="pink"
+          dark
+          fixed
+          bottom
+          right
+          fab
+          style="bottom: 16px; right: 16px"
+          @click="showAddModal"
+      >
+        <v-icon>mdi-plus</v-icon>
+      </v-btn>
+    </v-fab-transition>
   </div>
 </template>
 
@@ -42,7 +57,7 @@
       ...mapGetters(['users'])
     },
     methods: {
-      ...mapActions(['fetchUsers'])
+      ...mapActions(['fetchUsers', 'showAddModal'])
     },
     mounted() {
       if (this.users.length === 0) {

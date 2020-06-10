@@ -34,6 +34,7 @@
           <v-btn
               text
               class="amber--text text--darken-4"
+              @click="showEditModal(user.id)"
           >
             EDIT
           </v-btn>
@@ -67,7 +68,7 @@
       }
     },
     methods: {
-      ...mapActions(['showDeleteModal'])
+      ...mapActions(['showDeleteModal', 'showEditModal'])
     }
   }
 </script>
