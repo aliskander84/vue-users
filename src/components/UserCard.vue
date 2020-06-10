@@ -7,15 +7,15 @@
       >
         <v-img :src="user.avatar" alt=""/>
 
-        <v-card-title>
+        <v-card-title class="pa-3">
           {{user.first_name}} {{user.last_name}}
         </v-card-title>
 
-        <v-card-subtitle>
+        <v-card-subtitle class="px-3 pb-1 ma-0">
           {{user.email}}
         </v-card-subtitle>
 
-        <v-card-actions>
+        <v-card-actions class="pa-2">
           <v-spacer/>
 
           <router-link
@@ -41,6 +41,7 @@
           <v-btn
               text
               class="red--text text--darken-1"
+              @click="showDeleteModal(user.id)"
           >
             DELETE
           </v-btn>
@@ -51,6 +52,8 @@
 </template>
 
 <script>
+  import {mapActions} from 'vuex'
+
   export default {
     name: 'UserCard',
     props: {
@@ -62,6 +65,9 @@
       userName() {
         return `${this.user.first_name} ${this.user.last_name}`
       }
+    },
+    methods: {
+      ...mapActions(['showDeleteModal'])
     }
   }
 </script>
