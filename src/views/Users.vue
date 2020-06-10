@@ -2,7 +2,7 @@
   <div class="pa-2">
     <Pagination class="pa-2"/>
 
-    <v-container fluid>
+    <v-container fluid :v-if="users.length !== 0">
       <v-row>
         <v-col
             cols="12"
@@ -13,7 +13,6 @@
             xl="2"
             v-for="(user, index) of users"
             :key="user.id"
-            :v-if="users.length !== 0"
         >
           <UserCard
               :user="user"
@@ -24,9 +23,7 @@
       </v-row>
     </v-container>
 
-    <div class="loader" v-if="users.length === 0">
-      Empty
-    </div>
+    <Loader v-if="users.length === 0"/>
 
     <Pagination class="pa-2"/>
   </div>
@@ -36,10 +33,11 @@
   import {mapActions, mapGetters} from 'vuex'
   import UserCard from '../components/UserCard'
   import Pagination from '../components/Pagination/Pagination'
+  import Loader from '../components/Loader'
 
   export default {
     name: 'Users',
-    components: {Pagination, UserCard},
+    components: {Loader, Pagination, UserCard},
     computed: {
       ...mapGetters(['users'])
     },
